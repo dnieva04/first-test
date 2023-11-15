@@ -3,3 +3,12 @@ exten = s,1,NoOp(### predec ###)
 exten = s,n,Playback(/var/lib/xivo/sounds/playback/file_name)
 exten = s,n,Goto(default,xxxxxxxxxx,1)
 exten = s,n,Return()
+
+
+
+[repondeur-enregistreur]
+exten = s,1,NoOp(## Messagerie vocale avec son dans playblack ##)
+same = n,Answer()
+same = n,Playback(/var/lib/xivo/sounds/playback/file_rep)
+same = n,Voicemail(xxxxx@default,s)
+same = n,Hangup()
