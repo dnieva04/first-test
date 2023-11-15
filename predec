@@ -1,0 +1,5 @@
+[predec_bascule]
+exten = s,1,NoOp(### predec_COVID ###)
+exten = s,n,Playback(/var/lib/xivo/sounds/playback/predec_covid)
+exten = s,n,Goto(default,00423100523,1)
+exten = s,n,Return()
