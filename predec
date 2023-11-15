@@ -12,3 +12,16 @@ same = n,Answer()
 same = n,Playback(/var/lib/xivo/sounds/playback/file_rep)
 same = n,Voicemail(xxxxx@default,s)
 same = n,Hangup()
+
+
+
+[blacklist-incall]
+exten = s,1,NoOp(subroutine that refuse call if in the list below)
+same = n,GotoIf($[${XIVO_SRCNUM}="phone_number"]?deny)
+same = n,Return()
+same = n(deny),NoOp(number reconized hangup call)
+same = n,Hangup(7)
+
+[xivo-subrgbl-did]
+exten = s,1,GoSub(blacklist-incall,s,1)
+exten = s,n,Return()
